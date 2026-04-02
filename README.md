@@ -41,3 +41,31 @@ We finalized validation byte allocations, resulting in exactly **6,052 pristine 
 ### Folder Architecture
 - `train_folder/`: Contains all mapped parallel `.src` and `.tgt` text distributions, the python execution script (`process_data.py`), and the deeply granular processing metadata log (`read.md`).
 - `superficial_read.md`: A high-level processing log detailing the initial steps undertaken.
+
+## Try 2: Multi-lingual OCR Mining (10-Step Anchor Logic)
+
+In this **Second Try**, we attempted an advanced programmatic approach to mine the massive, unstructured OCR data dumped in `publications.csv` (which originally yielded 0 pairs in Try 1 due to our ultra-conservative string-matching).
+
+We implemented a sophisticated extraction pipeline (`try2_extract.py`) using a heuristic point-based Anchor Logic model.
+
+### Execution Logic & Anchor Proximity Scoring
+Because the OCR data is highly unstructured (containing scattered scholarly footnotes, language headers, and formatting errors), we calculated dynamic confidence scores line-by-line between potential Akkadian sources and English translations. 
+
+The pipeline assigned points based on the following rules:
+1. **Keyword Anchor Match (+5 points):** The page explicitly contained document structure keywords like "translation", "transliteration", "akkadian", or "english".
+2. **Close Proximity (+5 points):** The English translation candidate was structurally within 3 positional lines of the Akkadian line.
+3. **Language Identifiers (+2 points):** The candidate text was detected explicitly as native English using `langdetect`.
+4. **Translated Fallback (+1 point):** We integrated the `deep-translator` multi-lingual fallback. If the candidate was a foreign language (e.g. French, German, Spanish), the pipeline translated it immediately to English on the fly. 
+
+To prevent neural architecture hallucinations, we set an extremely conservative validation boundary: **Only pairs scoring 7 or more points were accepted.** 
+
+### Results & Final Extraction
+After completely processing the `publications.csv` document matrix, the algorithm **extracted exactly 0 validating pairs**. 
+
+**Core Diagnostics:**
+Our strict threshold validation math structurally eliminated all translated foreign translations that appeared without explicit page headers. 
+For instance, if a German translation was perfectly aligned alongside an Akkadian text (+5 distance points), but the actual PDF page lacked an explicit header reading "Translation" (0 anchor points), the German candidate would translate successfully (+1 translation point), reaching a final score of **6 points**. Because 6 < 7, it was algorithmically dropped right at the validation threshold.
+
+Additionally, older scholarly book publications frequently decouple Accadian cuneiform and modern translations entirely across opposite split pages, fracturing our core 3-line structural proximity assumption.
+
+To iterate in future data mining, we will likely lower the translation threshold score to 6, or radically expand the positional line scanning distance.
