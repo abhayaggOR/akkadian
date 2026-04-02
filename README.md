@@ -125,3 +125,40 @@ This suggests the next bottleneck is no longer only candidate detection. The rem
 - noisy OCR degradation in Akkadian lines
 - weak nearby English alignment on many pages
 - lack of multilingual translation support in the current runtime
+
+## Try 3.2: OCR-to-Reference Retrieval and Reranking
+
+In **Try 3.2**, we reworked the alignment stage from a plain fuzzy check into a retrieval problem followed by reranking.
+
+The new script is located at `src/data_prep/try3_2_extract_repo.py`.
+
+### What Try 3.2 Changes
+
+- Applies more aggressive OCR cleanup before matching
+- Normalizes transliteration spacing, hyphens, editorial marks, and digit noise
+- Builds 1-line, 2-line, and 3-line reference windows from `published_texts.csv`
+- Indexes those windows by informative transliteration tokens
+- Retrieves candidate reference windows using rare-token overlap first
+- Reranks only a small shortlist using weighted token overlap and canonical string similarity
+- Delays translation alignment until an Akkadian reference anchor has already been accepted
+
+### Outputs
+
+Try 3.2 writes:
+
+- `train_folder/try3_2_extracted.csv`
+- `train_folder/try3_2_read.md`
+- `train_folder/try3_2_process.log`
+
+### Current Result
+
+Try 3.2 completed a full local run over all `31,286` pages where `has_akkadian == true` in roughly `781.55` seconds.
+
+Its main improvement is that the anchor stage finally stopped collapsing to zero:
+
+- Akkadian candidates detected: `6,428`
+- Reference matches retained: `18`
+- Nearby English matches retained: `0`
+- Final extracted pairs: `0`
+
+This means the bottleneck has moved again. Try 3.2 can now anchor some OCR Akkadian lines to clean reference windows, but the surrounding OCR pages still do not yield nearby English lines that validate strongly enough under the current runtime constraints.
