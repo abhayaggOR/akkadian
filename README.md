@@ -69,3 +69,59 @@ For instance, if a German translation was perfectly aligned alongside an Akkadia
 Additionally, older scholarly book publications frequently decouple Accadian cuneiform and modern translations entirely across opposite split pages, fracturing our core 3-line structural proximity assumption.
 
 To iterate in future data mining, we will likely lower the translation threshold score to 6, or radically expand the positional line scanning distance.
+
+## Try 3: Linguistically Anchored Reference Matching
+
+In this **Third Try**, we move away from simple OCR proximity heuristics alone and instead combine:
+
+1. learned Akkadian structure from `train.csv`
+2. lexicon validation from `OA_Lexicon_eBL.csv`
+3. reference anchoring from `published_texts.csv`
+4. conservative translation-line validation around each Akkadian candidate
+
+The new repo-native script is located at `src/data_prep/try3_extract_repo.py`.
+
+### What Try 3 Adds
+
+- Learns common sentence starters, token frequencies, and sentence lengths directly from `train.csv`
+- Detects Akkadian candidates using hyphen patterns, lexicon coverage, starter frequency, and learned length constraints
+- Anchors candidates against `published_texts.csv` using alias lookup plus fuzzy reference similarity
+- Searches only nearby OCR lines for translation candidates
+- Applies confidence scoring to keep only high-precision pairs
+- Writes its outputs into `train_folder/try3_extracted.csv`, `train_folder/try3_read.md`, and `train_folder/try3_process.log`
+
+### Precision Note
+
+Try 3 still prioritizes **precision over quantity**. In the current local runtime, multilingual OCR lines can be detected heuristically, but automatic machine translation may not be available unless optional dependencies are installed. Because of that, the current implementation keeps only translation candidates that validate as English in the runtime environment.
+
+## Try 3.1: Sentence-Level Anchor Relaxation
+
+In **Try 3.1**, we preserve the overall Try 3 structure but specifically relax the anchor stage that previously collapsed the extraction count to zero.
+
+The refined script is located at `src/data_prep/try3_1_extract_repo.py`.
+
+### What Try 3.1 Changes
+
+- Splits `published_texts.csv` transliterations into sentence-level reference lines before matching
+- Uses a wider first-token and alias-backed candidate pool instead of only full-text anchor matching
+- Lowers the lexicon coverage requirement slightly to admit more OCR-damaged Akkadian candidates
+- Allows weaker similarity when the page contains a strong alias anchor
+- Expands the nearby translation search window while still selecting only the nearest English-valid line
+
+### Outputs
+
+Try 3.1 writes:
+
+- `train_folder/try3_1_extracted.csv`
+- `train_folder/try3_1_read.md`
+- `train_folder/try3_1_process.log`
+
+### Current Result
+
+In the current local run, Try 3.1 scanned all `31,286` OCR pages where `has_akkadian == true`, detected additional Akkadian candidates, and completed in roughly `217` seconds, but still extracted **0 final pairs** after the confidence and English-validation stages.
+
+This suggests the next bottleneck is no longer only candidate detection. The remaining failure point is the combination of:
+
+- noisy OCR degradation in Akkadian lines
+- weak nearby English alignment on many pages
+- lack of multilingual translation support in the current runtime
