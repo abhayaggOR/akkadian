@@ -271,3 +271,85 @@ Try 4.2 completed a full local run with the tighter high-confidence gate:
 - Runtime: about `2.21` seconds
 
 Try 4.2 is more selective than Try 4.1 in how it defines the core baseline band and high-confidence cutoff, but it still remains a heuristic expansion set rather than guaranteed baseline-quality data.
+
+## Try 5: Metadata-Driven Archive Expansion
+
+In **Try 5**, the focus shifts away from blind OCR mining and away from purely heuristic sentence splitting. Instead, the idea is to expand the dataset by linking clean Akkadian transliterations to publication-derived English translations through stable metadata.
+
+### Core Idea
+
+The main principle is:
+
+1. trust `published_texts.csv` for the Akkadian transliteration side
+2. extract translations from selected publication material
+3. connect both sides using text identifiers and archive metadata
+4. build a new supplemental parallel corpus from those matched texts
+
+This is meant to be a more structured and higher-precision route than trying to recover sentence pairs directly from noisy OCR pages.
+
+### Why Try 5 Is Different
+
+Earlier OCR attempts tried to detect Akkadian-like lines and nearby English lines automatically inside `publications.csv`. That approach struggled because:
+
+- OCR noise damaged both Akkadian and translation lines
+- nearby English text often turned out to be commentary rather than direct translation
+- line-level fuzzy matching was too brittle
+
+Try 5 changes the unit of work from **line-level OCR guessing** to **text-level archive matching**.
+
+### What Try 5 Uses
+
+- `published_texts.csv` as the trusted source of Akkadian transliterations
+- `publications.csv` as the source of publication-derived translations or translation-bearing text
+- metadata fields such as:
+  - `aliases`
+  - `excavation_no`
+  - `note`
+  - publication-specific text identifiers
+- `train.csv` as a reference for what is already present and what may still be missing
+
+### Planned Process
+
+1. **Start from one publication or archive at a time**
+   Instead of scanning the entire OCR dump at once, isolate one PDF/archive family at a time.
+
+2. **Collect text identifiers from the publication side**
+   These may be text labels, excavation numbers, archive IDs, or alias-like references present in the publication material.
+
+3. **Normalize identifiers**
+   Lowercase, strip punctuation, normalize spacing, and simplify inconsistent formatting before matching.
+
+4. **Search `published_texts.csv` using metadata**
+   Match publication-side identifiers against:
+   - `aliases`
+   - `excavation_no`
+   - `note`
+   - related catalog-like fields when useful
+
+5. **Build text-level parallel pairs**
+   Once a publication text is matched to a `published_texts.csv` record:
+   - take the clean transliteration from `published_texts.csv`
+   - pair it with the corresponding translation extracted from the publication side
+
+6. **Keep the supplemental data separate first**
+   Save these new matches into a separate dataset rather than immediately mixing them into the original train set.
+
+7. **Only later consider sentence splitting**
+   After trustworthy text-level pairs exist, they can be split into smaller units in a second stage if needed.
+
+### Why This May Work Better
+
+- Metadata identifiers are more stable than noisy OCR strings
+- `published_texts.csv` already gives the cleaner Akkadian side
+- publication-level linking is less brittle than line-level OCR alignment
+- even semi-manual or partially curated additions can be high-value in a low-resource setting
+
+### Expected Outcome
+
+Try 5 is intended to produce a **smaller but more trustworthy supplemental corpus** than the OCR-line methods, even if it is slower to build archive by archive.
+
+### Status
+
+- Result: pending
+- Counts: pending
+- Runtime: pending
