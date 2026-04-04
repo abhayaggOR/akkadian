@@ -243,9 +243,9 @@ Try 4.1 is somewhat more selective than Try 4 in how it scores candidates, but i
 
 ## Try 4.2: High-Confidence Sentence Expansion
 
-In **Try 4.2**, we will push the filtering further and aim for a smaller, higher-confidence add-on set than Try 4.1.
+In **Try 4.2**, we pushed the filtering further and aimed for a smaller, higher-confidence add-on set than Try 4.1.
 
-### Planned Strategy
+### Strategy
 
 - Reuse the Try 4.1 scoring pipeline as the proposal stage
 - Tighten confidence thresholds further
@@ -253,12 +253,21 @@ In **Try 4.2**, we will push the filtering further and aim for a smaller, higher
 - Prefer additions whose source/target lengths sit near the core baseline distribution, not just inside the broad range
 - Keep the added set intentionally smaller if that improves trustworthiness
 
-### Expected Outcome
+### Outputs
 
-Try 4.2 is intended to produce a **smaller but safer** set than Try 4.1.
+- `train_folder/try4_2_train.src`
+- `train_folder/try4_2_train.tgt`
+- `train_folder/try4_2_added_only.csv`
+- `train_folder/try4_2_read.md`
+- `train_folder/try4_2_process.log`
 
-### Status
+### Current Result
 
-- Result: pending
-- Counts: pending
-- Runtime: pending
+Try 4.2 completed a full local run with the tighter high-confidence gate:
+
+- Original clean baseline pairs: `6,052`
+- Additional high-confidence Try 4.2 pairs: `3,487`
+- Final expanded training pairs: `9,539`
+- Runtime: about `2.21` seconds
+
+Try 4.2 is more selective than Try 4.1 in how it defines the core baseline band and high-confidence cutoff, but it still remains a heuristic expansion set rather than guaranteed baseline-quality data.
