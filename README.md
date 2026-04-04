@@ -162,3 +162,72 @@ Its main improvement is that the anchor stage finally stopped collapsing to zero
 - Final extracted pairs: `0`
 
 This means the bottleneck has moved again. Try 3.2 can now anchor some OCR Akkadian lines to clean reference windows, but the surrounding OCR pages still do not yield nearby English lines that validate strongly enough under the current runtime constraints.
+
+## Try 4: Train.csv Sentence Expansion
+
+In **Try 4**, we shifted focus away from OCR mining and instead tried to expand the usable parallel corpus directly from `train.csv`.
+
+The script for this attempt is located at `src/data_prep/try4_expand_train_pairs.py`.
+
+### What Try 4 Changes
+
+- Keeps the original `6,052` clean sentence pairs as the baseline backbone
+- Normalizes transliteration before the second pass to reduce fragmentation
+- Splits English documents into sentence-like units using punctuation anchors
+- Allocates Akkadian source spans proportionally according to English sentence length
+- Re-filters the new candidate pairs using noise checks, copy checks, and length-ratio checks
+- Adds only pairs that are new relative to the original baseline
+
+### How Try 4 Works
+
+The pipeline first recreates the original clean baseline from `train.csv` using the existing newline/period split. It then runs a second sentence-expansion pass:
+
+1. normalize Akkadian transliteration to reduce sparsity and variation
+2. split the English side into sentence-like chunks using punctuation anchors
+3. allocate Akkadian token spans proportionally based on the relative English sentence lengths
+4. attach leftover Akkadian words to the final chunk so tokens are not dropped
+5. re-filter every newly proposed pair using stricter sanity checks
+6. keep only genuinely new pairs not already present in the `6,052` baseline
+
+### Outputs
+
+Try 4 writes:
+
+- `train_folder/try4_train.src`
+- `train_folder/try4_train.tgt`
+- `train_folder/try4_added_only.csv`
+- `train_folder/try4_read.md`
+- `train_folder/try4_process.log`
+
+### Current Result
+
+Try 4 expanded the corpus beyond the original baseline:
+
+- Original clean baseline pairs: `6,052`
+- Additional Try 4 pairs: `3,312`
+- Final expanded training pairs: `9,364`
+- Runtime: about `0.94` seconds
+
+This attempt succeeded at increasing coverage from `train.csv`, but the newly added pairs are more heuristic than the original baseline and should be treated as an expansion set rather than automatically assumed to be equally clean.
+
+## Try 4.1: Cleaner Sentence Expansion
+
+In **Try 4.1**, we will keep the same overall goal as Try 4, but make the added sentence pairs safer and less noisy.
+
+### Planned Strategy
+
+- Start from the Try 4 expansion logic rather than from scratch
+- Score each newly proposed pair instead of accepting all pairs that pass basic filters
+- Use baseline-quality statistics from the original `6,052` clean pairs as a reference range
+- Reject pairs with suspicious source-target length ratios, broken punctuation, chopped English fragments, or weak Akkadian chunks
+- Keep only the higher-confidence additions, even if the final increase is smaller than `+3,312`
+
+### Expected Outcome
+
+Try 4.1 is intended to produce a **smaller but cleaner** expansion set than Try 4.
+
+### Status
+
+- Result: pending
+- Counts: pending
+- Runtime: pending

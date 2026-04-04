@@ -1,0 +1,6 @@
+TRY 4: Expanding train.csv sentence pairs
+Phase 1: rebuilding original clean baseline
+  baseline pairs=6052
+Phase 2: generating extra pairs via English-anchored proportional splitting
+  additional pairs=3312
+TRY 4 COMPLETE: final expanded pair count=9364 in 0.94s
