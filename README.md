@@ -212,9 +212,9 @@ This attempt succeeded at increasing coverage from `train.csv`, but the newly ad
 
 ## Try 4.1: Cleaner Sentence Expansion
 
-In **Try 4.1**, we will keep the same overall goal as Try 4, but make the added sentence pairs safer and less noisy.
+In **Try 4.1**, we kept the same overall goal as Try 4, but tried to make the added sentence pairs safer and less noisy.
 
-### Planned Strategy
+### Strategy
 
 - Start from the Try 4 expansion logic rather than from scratch
 - Score each newly proposed pair instead of accepting all pairs that pass basic filters
@@ -222,9 +222,40 @@ In **Try 4.1**, we will keep the same overall goal as Try 4, but make the added 
 - Reject pairs with suspicious source-target length ratios, broken punctuation, chopped English fragments, or weak Akkadian chunks
 - Keep only the higher-confidence additions, even if the final increase is smaller than `+3,312`
 
+### Outputs
+
+- `train_folder/try4_1_train.src`
+- `train_folder/try4_1_train.tgt`
+- `train_folder/try4_1_added_only.csv`
+- `train_folder/try4_1_read.md`
+- `train_folder/try4_1_process.log`
+
+### Current Result
+
+Try 4.1 completed a full local run with the stricter scoring layer:
+
+- Original clean baseline pairs: `6,052`
+- Additional cleaner Try 4.1 pairs: `3,603`
+- Final expanded training pairs: `9,655`
+- Runtime: about `2.04` seconds
+
+Try 4.1 is somewhat more selective than Try 4 in how it scores candidates, but it still produces a fairly large heuristic add-on set. It is best treated as a cleaner expansion attempt, not as guaranteed baseline-quality data.
+
+## Try 4.2: High-Confidence Sentence Expansion
+
+In **Try 4.2**, we will push the filtering further and aim for a smaller, higher-confidence add-on set than Try 4.1.
+
+### Planned Strategy
+
+- Reuse the Try 4.1 scoring pipeline as the proposal stage
+- Tighten confidence thresholds further
+- Penalize suspicious short-source / polished-English combinations more strongly
+- Prefer additions whose source/target lengths sit near the core baseline distribution, not just inside the broad range
+- Keep the added set intentionally smaller if that improves trustworthiness
+
 ### Expected Outcome
 
-Try 4.1 is intended to produce a **smaller but cleaner** expansion set than Try 4.
+Try 4.2 is intended to produce a **smaller but safer** set than Try 4.1.
 
 ### Status
 

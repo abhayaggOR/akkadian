@@ -1,0 +1,6 @@
+TRY 4.1: Building cleaner train.csv expansion
+Phase 1: rebuilding baseline and reference statistics
+  baseline pairs=6052
+Phase 2: generating and rescoring extra pairs
+  cleaner additional pairs=3603
+TRY 4.1 COMPLETE: final expanded pair count=9655 in 2.04s
