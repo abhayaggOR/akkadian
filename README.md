@@ -308,7 +308,7 @@ Try 5 changes the unit of work from **line-level OCR guessing** to **text-level 
   - publication-specific text identifiers
 - `train.csv` as a reference for what is already present and what may still be missing
 
-### Planned Process
+### Process
 
 1. **Start from one publication or archive at a time**
    Instead of scanning the entire OCR dump at once, isolate one PDF/archive family at a time.
@@ -344,12 +344,20 @@ Try 5 changes the unit of work from **line-level OCR guessing** to **text-level 
 - publication-level linking is less brittle than line-level OCR alignment
 - even semi-manual or partially curated additions can be high-value in a low-resource setting
 
-### Expected Outcome
+### Outputs
 
-Try 5 is intended to produce a **smaller but more trustworthy supplemental corpus** than the OCR-line methods, even if it is slower to build archive by archive.
+- `train_folder/try5_train_plus.csv`
+- `train_folder/try5_read.md`
+- `train_folder/try5_process.log`
 
-### Status
+### Current Result
 
-- Result: pending
-- Counts: pending
-- Runtime: pending
+Try 5 produced a first archive-level supplemental corpus:
+
+- Total matched supplemental texts: `18`
+- Alias-driven archive matches: `12`
+- Excavation-number matches: `6`
+- New records relative to `train.csv`: `18`
+- Runtime: about `0.18` seconds
+
+This is different from the OCR attempts: the output is a **separate archive-level parallel set**, not yet mixed into the baseline sentence corpus. That makes it easier to inspect and later decide whether to keep it as document-level data or split it into smaller training units in a second stage.
