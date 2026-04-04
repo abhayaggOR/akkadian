@@ -361,3 +361,74 @@ Try 5 produced a first archive-level supplemental corpus:
 - Runtime: about `0.18` seconds
 
 This is different from the OCR attempts: the output is a **separate archive-level parallel set**, not yet mixed into the baseline sentence corpus. That makes it easier to inspect and later decide whether to keep it as document-level data or split it into smaller training units in a second stage.
+
+## Try 5.1: Sentence-Level Expansion From Archive Matches
+
+In **Try 5.1**, the archive-level pairs from Try 5 are turned into sentence-level additions. The goal is not to maximize count, but to keep only the safer sentence-sized pairs that can plausibly be merged with the original `train.src` / `train.tgt` baseline.
+
+### Core Idea
+
+The process is:
+
+1. start from the 18 archive-level parallel pairs recovered in Try 5
+2. split the English side into sentence-like units
+3. assign proportional Akkadian chunks from the full transliteration
+4. score each chunk against the quality profile of the original 6,052-pair baseline
+5. keep only the higher-confidence sentence pairs as a separate expansion set
+
+### Why Try 5.1 Is Useful
+
+Try 5 gave document-level pairs, which are useful but awkward to mix directly into sentence-level MT training. Try 5.1 is the bridge step:
+
+- it reuses the cleaner metadata-linked documents from Try 5
+- it converts them into smaller sentence-sized units
+- it applies stricter quality controls than the broader Try 4 family
+- it keeps the additions inspectable before they are trusted as part of the main corpus
+
+### What Try 5.1 Uses
+
+- `train_folder/try5_train_plus.csv` as the trusted archive-level input
+- `train_folder/train.src` and `train_folder/train.tgt` as the baseline quality reference
+- punctuation-based English sentence splitting
+- proportional Akkadian chunk allocation
+- confidence scoring based on transliteration quality, English quality, and length-ratio fit
+
+### Process
+
+1. **Load the 18 archive-level pairs**
+   Use the metadata-linked transliteration and translation pairs produced in Try 5.
+
+2. **Split the English side into sentence-like segments**
+   Use punctuation boundaries to create sentence candidates from the translation side.
+
+3. **Allocate Akkadian chunks proportionally**
+   Divide the full transliteration across the English sentence segments based on their relative length.
+
+4. **Filter obvious noise**
+   Drop pairs that are empty, mostly punctuation, or have extreme source-target imbalance.
+
+5. **Score against the baseline corpus**
+   Compare candidate chunk lengths and source-target ratios to the original 6,052 training pairs.
+
+6. **Keep only higher-confidence additions**
+   Save accepted sentence pairs separately, then build a merged corpus only after inspection.
+
+### Outputs
+
+- `train_folder/try5_1_train.src`
+- `train_folder/try5_1_train.tgt`
+- `train_folder/try5_1_added_only.csv`
+- `train_folder/try5_1_read.md`
+- `train_folder/try5_1_process.log`
+
+### Current Result
+
+Try 5.1 produced a smaller sentence-level expansion set from the 18 archive matches:
+
+- Archive-level input pairs: `18`
+- Sentence candidates considered: `130`
+- New sentence-level additions kept: `76`
+- Final merged total (baseline + Try 5.1): `6,128`
+- Runtime: about `0.15` seconds
+
+This attempt is more conservative than the broader train expansion attempts. It only works on the metadata-linked archive pairs from Try 5 and keeps the accepted additions in a separate file for inspection.

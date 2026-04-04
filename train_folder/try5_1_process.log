@@ -1,0 +1,20 @@
+TRY 5.1: Splitting 18 archive-level pairs into sentence additions
+[01/18] Cct 5, 6a: 10 english sentences -> 10 aligned chunks
+[02/18] POAT 5 | L29-558: 13 english sentences -> 13 aligned chunks
+[03/18] RC 1749B: 7 english sentences -> 7 aligned chunks
+[04/18] Cct 4, 1b: 6 english sentences -> 6 aligned chunks
+[05/18] TC 3, 95: 7 english sentences -> 7 aligned chunks
+[06/18] Cct 3, 5a: 5 english sentences -> 5 aligned chunks
+[07/18] Cole 8: 11 english sentences -> 11 aligned chunks
+[08/18] KUG 27: 16 english sentences -> 16 aligned chunks
+[09/18] POAT 39 | L29-602: 1 english sentences -> 1 aligned chunks
+[10/18] POAT 14 | L29-568: 11 english sentences -> 11 aligned chunks
+[11/18] KUG 48: 8 english sentences -> 8 aligned chunks
+[12/18] Cct 4, 1a: 12 english sentences -> 12 aligned chunks
+[13/18] Kt c/k 763: 1 english sentences -> 1 aligned chunks
+[14/18] Kt c/k 399: 2 english sentences -> 2 aligned chunks
+[15/18] Kt c/k 216: 4 english sentences -> 4 aligned chunks
+[16/18] Kt c/k 441: 1 english sentences -> 1 aligned chunks
+[17/18] Kt c/k 470+767: 9 english sentences -> 9 aligned chunks
+[18/18] Kt c/k 766: 6 english sentences -> 6 aligned chunks
+TRY 5.1 COMPLETE: archive_pairs=18, candidate_chunks=130, kept_pairs=76, runtime=0.15s
