@@ -416,6 +416,7 @@ def main() -> None:
     parser.add_argument("--num-layers", type=int, default=1)
     parser.add_argument("--dropout", type=float, default=0.1)
     parser.add_argument("--learning-rate", type=float, default=0.001)
+    parser.add_argument("--patience", type=int, default=10)
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--max-src-vocab", type=int, default=20000)
     parser.add_argument("--max-tgt-vocab", type=int, default=20000)
@@ -479,6 +480,7 @@ def main() -> None:
 
     history_rows: list[dict[str, object]] = []
     best_val_loss = float("inf")
+    epochs_without_improvement = 0
     best_model_path = EXPERIMENT_DIR / "best_model.pt"
 
     for epoch in range(1, args.epochs + 1):
@@ -503,6 +505,7 @@ def main() -> None:
 
         if val_loss < best_val_loss:
             best_val_loss = val_loss
+            epochs_without_improvement = 0
             torch.save(
                 {
                     "model_state": model.state_dict(),
@@ -513,6 +516,18 @@ def main() -> None:
                 best_model_path,
             )
             log("TRY 7: saved new best checkpoint", log_path)
+        else:
+            epochs_without_improvement += 1
+            log(
+                f"TRY 7: no validation improvement for {epochs_without_improvement} epoch(s)",
+                log_path,
+            )
+            if epochs_without_improvement >= args.patience:
+                log(
+                    f"TRY 7: early stopping triggered at epoch {epoch} with patience={args.patience}",
+                    log_path,
+                )
+                break
 
     history_path = EXPERIMENT_DIR / "train_history.csv"
     with history_path.open("w", encoding="utf-8", newline="") as file:
