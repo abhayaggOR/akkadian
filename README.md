@@ -442,3 +442,68 @@ Try 5.1 produced a smaller sentence-level expansion set from the 18 archive matc
 - Runtime: about `0.15` seconds
 
 This attempt is more conservative than the broader train expansion attempts. It only works on the metadata-linked archive pairs from Try 5 and keeps the accepted additions in a separate file for inspection.
+
+## Try 6: External Parallel Corpus Import
+
+In **Try 6**, the goal is different from OCR recovery and different from document splitting. Instead of trying to extract new pairs from noisy sources, the idea is to import an already line-aligned Akkadian-English corpus and merge only the rows that are genuinely new relative to the current working set.
+
+### Core Idea
+
+The process is:
+
+1. load an external parallel corpus where Akkadian transliteration and English translation are already aligned line by line
+2. use the plain-text parallel files rather than tokenized variants
+3. deduplicate the external corpus internally
+4. compare it against the active Try 4.2 dataset
+5. keep only new rows that pass basic safety filters
+6. build a merged corpus while preserving the imported rows separately for inspection
+
+### Why Try 6 Is Useful
+
+Earlier attempts tried to create additional data by:
+
+- splitting existing `train.csv` documents more aggressively
+- mining publication OCR pages
+- linking archive metadata back to trusted transliterations
+
+Try 6 takes a different route:
+
+- start from a corpus that is already parallel
+- avoid OCR alignment completely
+- avoid heuristic sentence matching completely
+- use deduplication and filtering as the main safeguards
+
+This makes it a high-yield import attempt rather than an extraction attempt.
+
+### What Try 6 Uses
+
+- the current active dataset from Try 4.2 as the baseline reference
+- plain parallel files for:
+  - `train.tr` / `train.en`
+  - `valid.tr` / `valid.en`
+  - `test.tr` / `test.en`
+- exact-pair deduplication
+- minimum-length and source-target ratio filtering
+
+### Outputs
+
+- `train_folder/try6_external_import.csv`
+- `train_folder/try6_added_only.csv`
+- `train_folder/try6_train.src`
+- `train_folder/try6_train.tgt`
+- `train_folder/try6_read.md`
+- `train_folder/try6_process.log`
+
+### Current Result
+
+Try 6 completed a full local import run:
+
+- External raw pairs loaded: `56,160`
+- External unique pairs after internal deduplication: `51,699`
+- Exact duplicates already present in Try 4.2: `0`
+- Additional rows filtered out by safety rules: `15,117`
+- New imported pairs kept: `36,582`
+- Final merged total (Try 4.2 + Try 6): `46,121`
+- Runtime: about `1.76` seconds
+
+This is a much larger expansion than the earlier attempts because it starts from an already parallel corpus. It should still be treated as a separate imported-corpus experiment until you decide whether to make it the main working dataset.

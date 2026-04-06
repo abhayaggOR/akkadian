@@ -1,0 +1,5 @@
+TRY 6: Importing external line-aligned corpus
+TRY 6 [train] loading 50478 transliteration lines and 50478 translation lines
+TRY 6 [valid] loading 2812 transliteration lines and 2812 translation lines
+TRY 6 [test] loading 2870 transliteration lines and 2870 translation lines
+TRY 6 COMPLETE: external_raw=56160, external_unique=51699, imported_new=36582, merged_total=46121, runtime=1.76s
