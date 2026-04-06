@@ -567,3 +567,56 @@ Try 6 completed a full local import run:
 - Runtime: about `1.76` seconds
 
 This is a much larger expansion than the earlier attempts because it starts from an already parallel corpus. It should still be treated as a separate imported-corpus experiment until you decide whether to make it the main working dataset.
+
+## Try 7: LSTM Baseline Training Setup
+
+In **Try 7**, the focus shifts from data construction to model training. The goal is to train a simple, MacBook-friendly seq2seq LSTM baseline on the large merged corpus and evaluate it cleanly with a `70 / 15 / 15` split.
+
+### Core Idea
+
+The training pipeline is designed to be lightweight enough for a MacBook Air M1 while still giving a real neural MT baseline:
+
+1. start from the merged parallel corpus
+2. split it into train, validation, and test sets
+3. build vocabularies from the training split only
+4. train a compact encoder-decoder LSTM
+5. save checkpoints based on validation loss
+6. report final evaluation metrics on the held-out test set
+
+### Why Try 7 Uses This Setup
+
+- `70 / 15 / 15` gives a clean separation between training, tuning, and final evaluation
+- a simple LSTM is realistic on lower-memory hardware
+- word-level vocabularies avoid blocking on extra tokenization dependencies
+- progress bars make long local training runs easier to monitor
+- test metrics at the end give a fairer picture than validation-only inspection
+
+### What Try 7 Uses
+
+- merged corpus:
+  - `train_folder/try6_train.src`
+  - `train_folder/try6_train.tgt`
+- deterministic `70 / 15 / 15` splitting
+- train-only vocabulary construction
+- encoder-decoder LSTM with configurable embedding size, hidden size, layer count, and batch size
+- validation-loss checkpointing
+- final test metrics including:
+  - test loss
+  - perplexity
+  - exact-match rate
+  - token accuracy
+  - simple corpus BLEU
+
+### Outputs
+
+- `src/training/train_try7_lstm.py`
+- `experiments/try7_lstm_baseline/split_and_config.json`
+- `experiments/try7_lstm_baseline/train_history.csv`
+- `experiments/try7_lstm_baseline/test_metrics.json`
+- `experiments/try7_lstm_baseline/test_samples.csv`
+- `experiments/try7_lstm_baseline/try7_run.log`
+- `experiments/try7_lstm_baseline/best_model.pt`
+
+### Current Status
+
+Try 7 training setup is implemented and smoke-tested locally. The full training run can now be launched directly from the repo, and final results can be recorded later once the chosen run finishes.
