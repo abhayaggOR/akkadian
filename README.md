@@ -2,6 +2,66 @@
 
 This repository contains the dataset processing pipeline and generated training pairs for translating Old Assyrian transliterated texts into English, utilizing the Deep Past Challenge dataset.
 
+## Dataset Checkpoints
+
+Below is a quick map of which experiment produced which dataset artifacts.
+
+- **Try 1 baseline corpus**
+  - Final clean sentence pairs: `6,052`
+  - Source: [train_folder/train.src](train_folder/train.src)
+  - Target: [train_folder/train.tgt](train_folder/train.tgt)
+  - Shuffled baseline: [train_folder/final_train.src](train_folder/final_train.src), [train_folder/final_train.tgt](train_folder/final_train.tgt)
+  - Tokenizer corpus: [train_folder/corpus.src](train_folder/corpus.src)
+
+- **Try 3 OCR reference matching**
+  - Final extracted pairs: `0`
+  - Outputs: [train_folder/try3_extracted.csv](train_folder/try3_extracted.csv), [train_folder/try3_read.md](train_folder/try3_read.md), [train_folder/try3_process.log](train_folder/try3_process.log)
+
+- **Try 3.1 relaxed anchor matching**
+  - Final extracted pairs: `0`
+  - Outputs: [train_folder/try3_1_extracted.csv](train_folder/try3_1_extracted.csv), [train_folder/try3_1_read.md](train_folder/try3_1_read.md), [train_folder/try3_1_process.log](train_folder/try3_1_process.log)
+
+- **Try 3.2 OCR retrieval and reranking**
+  - Final extracted pairs: `0`
+  - Outputs: [train_folder/try3_2_extracted.csv](train_folder/try3_2_extracted.csv), [train_folder/try3_2_read.md](train_folder/try3_2_read.md), [train_folder/try3_2_process.log](train_folder/try3_2_process.log)
+
+- **Try 4 heuristic train expansion**
+  - Final expanded corpus: `9,364`
+  - Source: [train_folder/try4_train.src](train_folder/try4_train.src)
+  - Target: [train_folder/try4_train.tgt](train_folder/try4_train.tgt)
+  - Added-only rows: [train_folder/try4_added_only.csv](train_folder/try4_added_only.csv)
+
+- **Try 4.1 cleaner heuristic expansion**
+  - Final expanded corpus: `9,655`
+  - Source: [train_folder/try4_1_train.src](train_folder/try4_1_train.src)
+  - Target: [train_folder/try4_1_train.tgt](train_folder/try4_1_train.tgt)
+  - Added-only rows: [train_folder/try4_1_added_only.csv](train_folder/try4_1_added_only.csv)
+
+- **Try 4.2 high-confidence expansion**
+  - Final expanded corpus: `9,539`
+  - Source: [train_folder/try4_2_train.src](train_folder/try4_2_train.src)
+  - Target: [train_folder/try4_2_train.tgt](train_folder/try4_2_train.tgt)
+  - Added-only rows: [train_folder/try4_2_added_only.csv](train_folder/try4_2_added_only.csv)
+  - Current selected working set: [train_folder/try4_2_train.src](train_folder/try4_2_train.src), [train_folder/try4_2_train.tgt](train_folder/try4_2_train.tgt)
+
+- **Try 5 metadata-driven archive expansion**
+  - Archive-level supplemental texts: `18`
+  - Outputs: [train_folder/try5_train_plus.csv](train_folder/try5_train_plus.csv), [train_folder/try5_read.md](train_folder/try5_read.md), [train_folder/try5_process.log](train_folder/try5_process.log)
+
+- **Try 5.1 sentence-level archive expansion**
+  - Final merged corpus: `6,128`
+  - Source: [train_folder/try5_1_train.src](train_folder/try5_1_train.src)
+  - Target: [train_folder/try5_1_train.tgt](train_folder/try5_1_train.tgt)
+  - Added-only rows: [train_folder/try5_1_added_only.csv](train_folder/try5_1_added_only.csv)
+
+- **Try 6 external parallel import**
+  - New imported pairs: `36,582`
+  - Final merged corpus with Try 4.2: `46,121`
+  - Imported rows: [train_folder/try6_external_import.csv](train_folder/try6_external_import.csv)
+  - Added-only rows: [train_folder/try6_added_only.csv](train_folder/try6_added_only.csv)
+  - Source: [train_folder/try6_train.src](train_folder/try6_train.src)
+  - Target: [train_folder/try6_train.tgt](train_folder/try6_train.tgt)
+
 ## Try 1: High-Precision Baseline Extraction
 
 This represents our **First Try** at extracting a workable dataset from the raw challenge data. The core philosophy driving this extraction was to rigidly prioritize **precision over quantity** ("better few clean pairs than many noisy ones"). By refusing to aggressively mine messy OCR text, we actively immunized the training set from misalignment noise. We executed a rigorous 7-Phase data pipeline to construct the datasets located in `train_folder/`.
