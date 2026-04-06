@@ -272,6 +272,16 @@ Try 4.2 completed a full local run with the tighter high-confidence gate:
 
 Try 4.2 is more selective than Try 4.1 in how it defines the core baseline band and high-confidence cutoff, but it still remains a heuristic expansion set rather than guaranteed baseline-quality data.
 
+### Current Working Dataset
+
+For the current training workflow, the selected working dataset is the **Try 4.2 expanded corpus**:
+
+- Active source file: `train_folder/try4_2_train.src`
+- Active target file: `train_folder/try4_2_train.tgt`
+- Working training-pair count: `9,539`
+
+Later attempts such as Try 5 and Try 5.1 remain useful as separate experiments, but for now the main dataset to move forward with is the Try 4.2 version.
+
 ## Try 5: Metadata-Driven Archive Expansion
 
 In **Try 5**, the focus shifts away from blind OCR mining and away from purely heuristic sentence splitting. Instead, the idea is to expand the dataset by linking clean Akkadian transliterations to publication-derived English translations through stable metadata.
