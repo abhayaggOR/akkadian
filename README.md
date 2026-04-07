@@ -2,6 +2,16 @@
 
 This repository contains the dataset processing pipeline and generated training pairs for translating Old Assyrian transliterated texts into English, utilizing the Deep Past Challenge dataset.
 
+## Server Environment
+
+- GPU hardware: NVIDIA GeForce RTX 4060 Ti
+- System driver: NVIDIA 590.48.01
+- System CUDA version: 13.1
+- Python environment: `python3` with PyTorch `1.10.2+cpu`
+- CUDA unavailable in the installed PyTorch package, so current runs use CPU only
+- Current background experiment command: `nohup python3 src/training/train_try7_lstm.py --epochs 100 --patience 75 > try7_output.log 2>&1 &`
+- Live monitoring: `tail -f try7_output.log`
+
 ## Dataset Checkpoints
 
 Below is a quick map of which experiment produced which dataset artifacts.
