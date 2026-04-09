@@ -54,9 +54,16 @@ Below is a quick map of which experiment produced which dataset artifacts.
   - Added-only rows: [train_folder/try4_2_added_only.csv](train_folder/try4_2_added_only.csv)
   - Current selected working set: [train_folder/try4_2_train.src](train_folder/try4_2_train.src), [train_folder/try4_2_train.tgt](train_folder/try4_2_train.tgt)
 
-- **Try 5 metadata-driven archive expansion**
-  - Archive-level supplemental texts: `18`
-  - Outputs: [train_folder/try5_train_plus.csv](train_folder/try5_train_plus.csv), [train_folder/try5_read.md](train_folder/try5_read.md), [train_folder/try5_process.log](train_folder/try5_process.log)
+- **Try 7 LSTM baseline**
+  - Dataset: try6_train.src/tgt (46,121 rows)
+  - Split: train=32,284 val=6,918 test=6,919
+  - Vocab: src=20,000 tgt=18,979
+  - Model: LSTM encoder-decoder (embed_dim=128, hidden_dim=256, num_layers=1, dropout=0.1)
+  - Training: 100 epochs, patience=75, early stopped at epoch 85
+  - Best val_loss: 3.2903
+  - Test metrics: loss=3.2694, BLEU=9.48, exact_match=0.0123
+  - Runtime: ~7 hours on CPU
+  - Outputs: [experiments/try7_lstm_baseline/](experiments/try7_lstm_baseline/)
 
 - **Try 5.1 sentence-level archive expansion**
   - Final merged corpus: `6,128`
