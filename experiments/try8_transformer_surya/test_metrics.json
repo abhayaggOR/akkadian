@@ -1,0 +1,13 @@
+{
+  "experiment": "try8_transformer_surya",
+  "stopped_epoch": 160,
+  "best_validation_loss_epoch": 150,
+  "best_validation_bleu_epoch": 159,
+  "best_validation_chrf_epoch": 160,
+  "test_metrics": {
+    "greedy_bleu": 20.60,
+    "greedy_chrf_pp": 47.80,
+    "beam4_bleu": 25.95,
+    "beam4_chrf_pp": 49.93
+  }
+}
