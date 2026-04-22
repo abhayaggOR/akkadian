@@ -1,0 +1,689 @@
+[2026-04-21 14:02:06 IST] starting script.py
+[NbConvertApp] Converting notebook transformer_akkadian_english.ipynb to notebook
+/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.
+  validate(nb)
+/home/sem8/.local/lib/python3.10/site-packages/IPython/paths.py:62: UserWarning: IPython dir '/home/sem8/.ipython' is not a writable location, using a temp directory.
+  warn("IPython dir '{0}' is not a writable location,"
+/home/sem8/.local/lib/python3.10/site-packages/jupyter_client/localinterfaces.py:58: UserWarning: Unexpected error discovering local network interfaces: [Errno 1] Operation not permitted
+  ret = f(**kwargs)
+[NbConvertApp] ERROR | [Errno 1] Operation not permitted
+Traceback (most recent call last):
+  File "/home/sem8/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/sem8/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 441, in _async_start_kernel
+    kernel_cmd, kw = await self._async_pre_start_kernel(**kw)
+  File "/home/sem8/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 406, in _async_pre_start_kernel
+    kw = await self.provisioner.pre_launch(**kw)
+  File "/home/sem8/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 193, in pre_launch
+    km.shell_port = lpc.find_available_port(km.ip)
+  File "/home/sem8/.local/lib/python3.10/site-packages/jupyter_client/connect.py", line 703, in find_available_port
+    tmp_sock = socket.socket()
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/socket.py", line 232, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+PermissionError: [Errno 1] Operation not permitted
+Traceback (most recent call last):
+  File "/home/sem8/miniconda3/envs/py310gpu/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/sem8/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/sem8/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/exporters/notebook.py", line 36, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 97, in preprocess
+    with self.setup_kernel():
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/contextlib.py", line 135, in __enter__
+    return next(self.gen)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbclient/client.py", line 600, in setup_kernel
+    self.start_new_kernel(**kwargs)
+  File "/home/sem8/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbclient/client.py", line 550, in async_start_new_kernel
+    await ensure_async(self.km.start_kernel(extra_arguments=self.extra_arguments, **kwargs))
+  File "/home/sem8/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 214, in ensure_async
+    result = await obj
+  File "/home/sem8/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 97, in wrapper
+    raise e
+  File "/home/sem8/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 88, in wrapper
+    out = await method(self, *args, **kwargs)
+  File "/home/sem8/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 441, in _async_start_kernel
+    kernel_cmd, kw = await self._async_pre_start_kernel(**kw)
+  File "/home/sem8/.local/lib/python3.10/site-packages/jupyter_client/manager.py", line 406, in _async_pre_start_kernel
+    kw = await self.provisioner.pre_launch(**kw)
+  File "/home/sem8/.local/lib/python3.10/site-packages/jupyter_client/provisioning/local_provisioner.py", line 193, in pre_launch
+    km.shell_port = lpc.find_available_port(km.ip)
+  File "/home/sem8/.local/lib/python3.10/site-packages/jupyter_client/connect.py", line 703, in find_available_port
+    tmp_sock = socket.socket()
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/socket.py", line 232, in __init__
+    _socket.socket.__init__(self, family, type, proto, fileno)
+PermissionError: [Errno 1] Operation not permitted
+Traceback (most recent call last):
+  File "/home/sem8/satts/NLP/script.py", line 12, in <module>
+    run("transformer_akkadian_english.ipynb")
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sem8/satts/NLP/script.py", line 4, in run
+    subprocess.run([
+    ~~~~~~~~~~~~~~^^
+        "jupyter", "nbconvert",
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        "--output", nb.replace(".ipynb", "_out.ipynb")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ], check=True)
+    ^^^^^^^^^^^^^^
+  File "/home/sem8/miniconda3/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['jupyter', 'nbconvert', '--to', 'notebook', '--execute', 'transformer_akkadian_english.ipynb', '--ExecutePreprocessor.timeout=-1', '--output', 'transformer_akkadian_english_out.ipynb']' returned non-zero exit status 1.
+[2026-04-21 14:02:25 IST] starting script.py
+[2026-04-21 14:02:45 IST] starting script.py
+[NbConvertApp] Converting notebook transformer_akkadian_english.ipynb to notebook
+/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.
+  validate(nb)
+
+
+
+
+
+
+[2026-04-21 14:04:26 IST] starting script.py
+[NbConvertApp] Converting notebook transformer_akkadian_english.ipynb to notebook
+/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.
+  validate(nb)
+
+
+
+
+
+
+[2026-04-21 14:05:51 IST] starting script.py
+Traceback (most recent call last):
+  File "/home/sem8/miniconda3/envs/py310gpu/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/sem8/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/sem8/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/exporters/notebook.py", line 36, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/sem8/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+
+
+def get_cross_attention(
+    model, sentence, src_tokenizer, tgt_tokenizer, device, max_len=50
+):
+    """
+    Run greedy decode and collect cross-attention weights from the
+    last decoder layer (averaged over all heads).
+
+    Returns
+    -------
+    tgt_tokens   : list[str]
+    src_tokens   : list[str]
+    attn_matrix  : np.ndarray  shape (tgt_len, src_len)
+    """
+    model.eval()
+
+    src_ids    = src_tokenizer.encode(sentence).ids
+    src_tokens = [src_tokenizer.id_to_token(i) for i in src_ids]
+    src_tensor = torch.tensor(src_ids).unsqueeze(0).to(device)
+
+    # Register a forward hook on the last decoder layer's cross-attention
+    cross_attn_weights = []
+
+    def hook_fn(module, input, output):
+        # nn.MultiheadAttention returns (attn_output, attn_weights)
+        # attn_weights: (batch, nhead, tgt_len, src_len) when need_weights=True
+        # PyTorch averages over heads by default when need_weights=True
+        cross_attn_weights.append(output[1].detach().cpu())  # (1, tgt_t, src_len)
+
+    # Hook the multihead_attn of the last decoder layer
+    last_decoder_layer = model.transformer_decoder.layers[-1]
+    hook = last_decoder_layer.multihead_attn.register_forward_hook(hook_fn)
+
+    with torch.no_grad():
+        memory = model.encode(src_tensor)
+
+    generated = [SOS_IDX]
+    attn_rows  = []
+
+    for _ in range(max_len):
+        cross_attn_weights.clear()
+        tgt_t = torch.tensor(generated).unsqueeze(0).to(device)
+        with torch.no_grad():
+            logits = model.decode(tgt_t, memory, src_tensor)
+        # cross_attn_weights[0]: (1, t, src_len) — attention for all positions
+        # We only want the last generated position
+        attn_last = cross_attn_weights[0][0, -1, :len(src_ids)].numpy()  # (src_len,)
+        next_id   = logits[0, -1].argmax().item()
+        if next_id == EOS_IDX:
+            break
+        generated.append(next_id)
+        attn_rows.append(attn_last)
+
+    hook.remove()
+
+    tgt_tokens  = [tgt_tokenizer.id_to_token(i) for i in generated[1:]]
+    attn_matrix = np.array(attn_rows)   # (tgt_len, src_len)
+    return tgt_tokens, src_tokens, attn_matrix
+
+
+def plot_attention(sentence, tgt_tokens, src_tokens, attn_matrix):
+    fig, ax = plt.subplots(
+        figsize=(max(8, len(src_tokens)), max(6, len(tgt_tokens) // 2))
+    )
+    im = ax.matshow(attn_matrix, cmap='viridis')
+    plt.colorbar(im, ax=ax)
+    ax.set_xticks(range(len(src_tokens)))
+    ax.set_yticks(range(len(tgt_tokens)))
+    ax.set_xticklabels(src_tokens, rotation=90, fontsize=9)
+    ax.set_yticklabels(tgt_tokens, fontsize=9)
+    ax.set_xlabel('Source (Akkadian BPE tokens)')
+    ax.set_ylabel('Target (English BPE tokens)')
+    ax.set_title(f'Cross-Attention (last decoder layer): "{sentence[:60]}"')
+    plt.tight_layout()
+    plt.savefig('transformer_attention_map.png', dpi=150)
+    plt.show()
+
+
+# Run on a sample from the test set
+sample_sentence = test_df.iloc[0]['source']
+tgt_tok, src_tok, attn = get_cross_attention(
+    model, sample_sentence, src_tokenizer, tgt_tokenizer, device
+)
+plot_attention(sample_sentence, tgt_tok, src_tok, attn)
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mAttributeError[0m                            Traceback (most recent call last)
+Cell [0;32mIn[17], line 84[0m
+[1;32m     82[0m [38;5;66;03m# Run on a sample from the test set[39;00m
+[1;32m     83[0m sample_sentence [38;5;241m=[39m test_df[38;5;241m.[39miloc[[38;5;241m0[39m][[38;5;124m'[39m[38;5;124msource[39m[38;5;124m'[39m]
+[0;32m---> 84[0m tgt_tok, src_tok, attn [38;5;241m=[39m [43mget_cross_attention[49m[43m([49m
+[1;32m     85[0m [43m    [49m[43mmodel[49m[43m,[49m[43m [49m[43msample_sentence[49m[43m,[49m[43m [49m[43msrc_tokenizer[49m[43m,[49m[43m [49m[43mtgt_tokenizer[49m[43m,[49m[43m [49m[43mdevice[49m
+[1;32m     86[0m [43m)[49m
+[1;32m     87[0m plot_attention(sample_sentence, tgt_tok, src_tok, attn)
+
+Cell [0;32mIn[17], line 47[0m, in [0;36mget_cross_attention[0;34m(model, sentence, src_tokenizer, tgt_tokenizer, device, max_len)[0m
+[1;32m     45[0m tgt_t [38;5;241m=[39m torch[38;5;241m.[39mtensor(generated)[38;5;241m.[39munsqueeze([38;5;241m0[39m)[38;5;241m.[39mto(device)
+[1;32m     46[0m [38;5;28;01mwith[39;00m torch[38;5;241m.[39mno_grad():
+[0;32m---> 47[0m     logits [38;5;241m=[39m [43mmodel[49m[38;5;241;43m.[39;49m[43mdecode[49m[43m([49m[43mtgt_t[49m[43m,[49m[43m [49m[43mmemory[49m[43m,[49m[43m [49m[43msrc_tensor[49m[43m)[49m
+[1;32m     48[0m [38;5;66;03m# cross_attn_weights[0]: (1, t, src_len) — attention for all positions[39;00m
+[1;32m     49[0m [38;5;66;03m# We only want the last generated position[39;00m
+[1;32m     50[0m attn_last [38;5;241m=[39m cross_attn_weights[[38;5;241m0[39m][[38;5;241m0[39m, [38;5;241m-[39m[38;5;241m1[39m, :[38;5;28mlen[39m(src_ids)][38;5;241m.[39mnumpy()  [38;5;66;03m# (src_len,)[39;00m
+
+Cell [0;32mIn[9], line 164[0m, in [0;36mTransformerMT.decode[0;34m(self, tgt, memory, src)[0m
+[1;32m    159[0m src_pad_mask     [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mmake_src_key_padding_mask(src)
+[1;32m    161[0m tgt_emb [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mpos_decoder(
+[1;32m    162[0m     [38;5;28mself[39m[38;5;241m.[39mtgt_embedding(tgt) [38;5;241m*[39m math[38;5;241m.[39msqrt([38;5;28mself[39m[38;5;241m.[39md_model)
+[1;32m    163[0m )
+[0;32m--> 164[0m out [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mtransformer_decoder[49m[43m([49m
+[1;32m    165[0m [43m    [49m[43mtgt_emb[49m[43m,[49m[43m [49m[43mmemory[49m[43m,[49m
+[1;32m    166[0m [43m    [49m[43mtgt_mask[49m[38;5;241;43m=[39;49m[43mtgt_causal_mask[49m[43m,[49m
+[1;32m    167[0m [43m    [49m[43mtgt_key_padding_mask[49m[38;5;241;43m=[39;49m[43mtgt_pad_mask[49m[43m,[49m
+[1;32m    168[0m [43m    [49m[43mmemory_key_padding_mask[49m[38;5;241;43m=[39;49m[43msrc_pad_mask[49m[43m,[49m
+[1;32m    169[0m [43m[49m[43m)[49m
+[1;32m    170[0m [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39mfc_out(out)
+
+File [0;32m~/miniconda3/envs/py310gpu/lib/python3.10/site-packages/torch/nn/modules/module.py:1779[0m, in [0;36mModule._wrapped_call_impl[0;34m(self, *args, **kwargs)[0m
+[1;32m   1777[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_compiled_call_impl([38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs)  [38;5;66;03m# type: ignore[misc][39;00m
+[1;32m   1778[0m [38;5;28;01melse[39;00m:
+[0;32m-> 1779[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_call_impl[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/miniconda3/envs/py310gpu/lib/python3.10/site-packages/torch/nn/modules/module.py:1790[0m, in [0;36mModule._call_impl[0;34m(self, *args, **kwargs)[0m
+[1;32m   1785[0m [38;5;66;03m# If we don't have any hooks, we want to skip the rest of the logic in[39;00m
+[1;32m   1786[0m [38;5;66;03m# this function, and just call forward.[39;00m
+[1;32m   1787[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m ([38;5;28mself[39m[38;5;241m.[39m_backward_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_backward_pre_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_forward_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_forward_pre_hooks
+[1;32m   1788[0m         [38;5;129;01mor[39;00m _global_backward_pre_hooks [38;5;129;01mor[39;00m _global_backward_hooks
+[1;32m   1789[0m         [38;5;129;01mor[39;00m _global_forward_hooks [38;5;129;01mor[39;00m _global_forward_pre_hooks):
+[0;32m-> 1790[0m     [38;5;28;01mreturn[39;00m [43mforward_call[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m   1792[0m result [38;5;241m=[39m [38;5;28;01mNone[39;00m
+[1;32m   1793[0m called_always_called_hooks [38;5;241m=[39m [38;5;28mset[39m()
+
+File [0;32m~/miniconda3/envs/py310gpu/lib/python3.10/site-packages/torch/nn/modules/transformer.py:644[0m, in [0;36mTransformerDecoder.forward[0;34m(self, tgt, memory, tgt_mask, memory_mask, tgt_key_padding_mask, memory_key_padding_mask, tgt_is_causal, memory_is_causal)[0m
+[1;32m    641[0m tgt_is_causal [38;5;241m=[39m _detect_is_causal_mask(tgt_mask, tgt_is_causal, seq_len)
+[1;32m    643[0m [38;5;28;01mfor[39;00m mod [38;5;129;01min[39;00m [38;5;28mself[39m[38;5;241m.[39mlayers:
+[0;32m--> 644[0m     output [38;5;241m=[39m [43mmod[49m[43m([49m
+[1;32m    645[0m [43m        [49m[43moutput[49m[43m,[49m
+[1;32m    646[0m [43m        [49m[43mmemory[49m[43m,[49m
+[1;32m    647[0m [43m        [49m[43mtgt_mask[49m[38;5;241;43m=[39;49m[43mtgt_mask[49m[43m,[49m
+[1;32m    648[0m [43m        [49m[43mmemory_mask[49m[38;5;241;43m=[39;49m[43mmemory_mask[49m[43m,[49m
+[1;32m    649[0m [43m        [49m[43mtgt_key_padding_mask[49m[38;5;241;43m=[39;49m[43mtgt_key_padding_mask[49m[43m,[49m
+[1;32m    650[0m [43m        [49m[43mmemory_key_padding_mask[49m[38;5;241;43m=[39;49m[43mmemory_key_padding_mask[49m[43m,[49m
+[1;32m    651[0m [43m        [49m[43mtgt_is_causal[49m[38;5;241;43m=[39;49m[43mtgt_is_causal[49m[43m,[49m
+[1;32m    652[0m [43m        [49m[43mmemory_is_causal[49m[38;5;241;43m=[39;49m[43mmemory_is_causal[49m[43m,[49m
+[1;32m    653[0m [43m    [49m[43m)[49m
+[1;32m    655[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mnorm [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[1;32m    656[0m     output [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mnorm(output)
+
+File [0;32m~/miniconda3/envs/py310gpu/lib/python3.10/site-packages/torch/nn/modules/module.py:1779[0m, in [0;36mModule._wrapped_call_impl[0;34m(self, *args, **kwargs)[0m
+[1;32m   1777[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_compiled_call_impl([38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs)  [38;5;66;03m# type: ignore[misc][39;00m
+[1;32m   1778[0m [38;5;28;01melse[39;00m:
+[0;32m-> 1779[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_call_impl[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/miniconda3/envs/py310gpu/lib/python3.10/site-packages/torch/nn/modules/module.py:1790[0m, in [0;36mModule._call_impl[0;34m(self, *args, **kwargs)[0m
+[1;32m   1785[0m [38;5;66;03m# If we don't have any hooks, we want to skip the rest of the logic in[39;00m
+[1;32m   1786[0m [38;5;66;03m# this function, and just call forward.[39;00m
+[1;32m   1787[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m ([38;5;28mself[39m[38;5;241m.[39m_backward_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_backward_pre_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_forward_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_forward_pre_hooks
+[1;32m   1788[0m         [38;5;129;01mor[39;00m _global_backward_pre_hooks [38;5;129;01mor[39;00m _global_backward_hooks
+[1;32m   1789[0m         [38;5;129;01mor[39;00m _global_forward_hooks [38;5;129;01mor[39;00m _global_forward_pre_hooks):
+[0;32m-> 1790[0m     [38;5;28;01mreturn[39;00m [43mforward_call[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m   1792[0m result [38;5;241m=[39m [38;5;28;01mNone[39;00m
+[1;32m   1793[0m called_always_called_hooks [38;5;241m=[39m [38;5;28mset[39m()
+
+File [0;32m~/miniconda3/envs/py310gpu/lib/python3.10/site-packages/torch/nn/modules/transformer.py:1135[0m, in [0;36mTransformerDecoderLayer.forward[0;34m(self, tgt, memory, tgt_mask, memory_mask, tgt_key_padding_mask, memory_key_padding_mask, tgt_is_causal, memory_is_causal)[0m
+[1;32m   1131[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mnorm_first:
+[1;32m   1132[0m     x [38;5;241m=[39m x [38;5;241m+[39m [38;5;28mself[39m[38;5;241m.[39m_sa_block(
+[1;32m   1133[0m         [38;5;28mself[39m[38;5;241m.[39mnorm1(x), tgt_mask, tgt_key_padding_mask, tgt_is_causal
+[1;32m   1134[0m     )
+[0;32m-> 1135[0m     x [38;5;241m=[39m x [38;5;241m+[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_mha_block[49m[43m([49m
+[1;32m   1136[0m [43m        [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mnorm2[49m[43m([49m[43mx[49m[43m)[49m[43m,[49m
+[1;32m   1137[0m [43m        [49m[43mmemory[49m[43m,[49m
+[1;32m   1138[0m [43m        [49m[43mmemory_mask[49m[43m,[49m
+[1;32m   1139[0m [43m        [49m[43mmemory_key_padding_mask[49m[43m,[49m
+[1;32m   1140[0m [43m        [49m[43mmemory_is_causal[49m[43m,[49m
+[1;32m   1141[0m [43m    [49m[43m)[49m
+[1;32m   1142[0m     x [38;5;241m=[39m x [38;5;241m+[39m [38;5;28mself[39m[38;5;241m.[39m_ff_block([38;5;28mself[39m[38;5;241m.[39mnorm3(x))
+[1;32m   1143[0m [38;5;28;01melse[39;00m:
+
+File [0;32m~/miniconda3/envs/py310gpu/lib/python3.10/site-packages/torch/nn/modules/transformer.py:1185[0m, in [0;36mTransformerDecoderLayer._mha_block[0;34m(self, x, mem, attn_mask, key_padding_mask, is_causal)[0m
+[1;32m   1177[0m [38;5;28;01mdef[39;00m[38;5;250m [39m[38;5;21m_mha_block[39m(
+[1;32m   1178[0m     [38;5;28mself[39m,
+[1;32m   1179[0m     x: Tensor,
+[0;32m   (...)[0m
+[1;32m   1183[0m     is_causal: [38;5;28mbool[39m [38;5;241m=[39m [38;5;28;01mFalse[39;00m,
+[1;32m   1184[0m ) [38;5;241m-[39m[38;5;241m>[39m Tensor:
+[0;32m-> 1185[0m     x [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mmultihead_attn[49m[43m([49m
+[1;32m   1186[0m [43m        [49m[43mx[49m[43m,[49m
+[1;32m   1187[0m [43m        [49m[43mmem[49m[43m,[49m
+[1;32m   1188[0m [43m        [49m[43mmem[49m[43m,[49m
+[1;32m   1189[0m [43m        [49m[43mattn_mask[49m[38;5;241;43m=[39;49m[43mattn_mask[49m[43m,[49m
+[1;32m   1190[0m [43m        [49m[43mkey_padding_mask[49m[38;5;241;43m=[39;49m[43mkey_padding_mask[49m[43m,[49m
+[1;32m   1191[0m [43m        [49m[43mis_causal[49m[38;5;241;43m=[39;49m[43mis_causal[49m[43m,[49m
+[1;32m   1192[0m [43m        [49m[43mneed_weights[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
+[1;32m   1193[0m [43m    [49m[43m)[49m[[38;5;241m0[39m]
+[1;32m   1194[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39mdropout2(x)
+
+File [0;32m~/miniconda3/envs/py310gpu/lib/python3.10/site-packages/torch/nn/modules/module.py:1779[0m, in [0;36mModule._wrapped_call_impl[0;34m(self, *args, **kwargs)[0m
+[1;32m   1777[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_compiled_call_impl([38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs)  [38;5;66;03m# type: ignore[misc][39;00m
+[1;32m   1778[0m [38;5;28;01melse[39;00m:
+[0;32m-> 1779[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_call_impl[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/miniconda3/envs/py310gpu/lib/python3.10/site-packages/torch/nn/modules/module.py:1885[0m, in [0;36mModule._call_impl[0;34m(self, *args, **kwargs)[0m
+[1;32m   1882[0m     [38;5;28;01mreturn[39;00m inner()
+[1;32m   1884[0m [38;5;28;01mtry[39;00m:
+[0;32m-> 1885[0m     [38;5;28;01mreturn[39;00m [43minner[49m[43m([49m[43m)[49m
+[1;32m   1886[0m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m:
+[1;32m   1887[0m     [38;5;66;03m# run always called hooks if they have not already been run[39;00m
+[1;32m   1888[0m     [38;5;66;03m# For now only forward hooks have the always_call option but perhaps[39;00m
+[1;32m   1889[0m     [38;5;66;03m# this functionality should be added to full backward hooks as well.[39;00m
+[1;32m   1890[0m     [38;5;28;01mfor[39;00m hook_id, hook [38;5;129;01min[39;00m _global_forward_hooks[38;5;241m.[39mitems():
+
+File [0;32m~/miniconda3/envs/py310gpu/lib/python3.10/site-packages/torch/nn/modules/module.py:1846[0m, in [0;36mModule._call_impl.<locals>.inner[0;34m()[0m
+[1;32m   1844[0m     hook_result [38;5;241m=[39m hook([38;5;28mself[39m, args, kwargs, result)
+[1;32m   1845[0m [38;5;28;01melse[39;00m:
+[0;32m-> 1846[0m     hook_result [38;5;241m=[39m [43mhook[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43margs[49m[43m,[49m[43m [49m[43mresult[49m[43m)[49m
+[1;32m   1848[0m [38;5;28;01mif[39;00m hook_result [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[1;32m   1849[0m     result [38;5;241m=[39m hook_result
+
+Cell [0;32mIn[17], line 31[0m, in [0;36mget_cross_attention.<locals>.hook_fn[0;34m(module, input, output)[0m
+[1;32m     27[0m [38;5;28;01mdef[39;00m[38;5;250m [39m[38;5;21mhook_fn[39m(module, [38;5;28minput[39m, output):
+[1;32m     28[0m     [38;5;66;03m# nn.MultiheadAttention returns (attn_output, attn_weights)[39;00m
+[1;32m     29[0m     [38;5;66;03m# attn_weights: (batch, nhead, tgt_len, src_len) when need_weights=True[39;00m
+[1;32m     30[0m     [38;5;66;03m# PyTorch averages over heads by default when need_weights=True[39;00m
+[0;32m---> 31[0m     cross_attn_weights[38;5;241m.[39mappend([43moutput[49m[43m[[49m[38;5;241;43m1[39;49m[43m][49m[38;5;241;43m.[39;49m[43mdetach[49m()[38;5;241m.[39mcpu())
+
+[0;31mAttributeError[0m: 'NoneType' object has no attribute 'detach'
+
+Traceback (most recent call last):
+  File "/home/sem8/satts/NLP/script.py", line 12, in <module>
+    run("transformer_akkadian_english.ipynb")
+  File "/home/sem8/satts/NLP/script.py", line 4, in run
+    subprocess.run([
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['jupyter', 'nbconvert', '--to', 'notebook', '--execute', 'transformer_akkadian_english.ipynb', '--ExecutePreprocessor.timeout=-1', '--output', 'transformer_akkadian_english_out.ipynb']' returned non-zero exit status 1.
+Traceback (most recent call last):
+  File "/home/sem8/miniconda3/envs/py310gpu/bin/jupyter-nbconvert", line 6, in <module>
+    sys.exit(main())
+  File "/home/sem8/.local/lib/python3.10/site-packages/jupyter_core/application.py", line 284, in launch_instance
+    super().launch_instance(argv=argv, **kwargs)
+  File "/home/sem8/.local/lib/python3.10/site-packages/traitlets/config/application.py", line 1075, in launch_instance
+    app.start()
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 420, in start
+    self.convert_notebooks()
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 597, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 563, in convert_single_notebook
+    output, resources = self.export_single_notebook(
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/nbconvertapp.py", line 487, in export_single_notebook
+    output, resources = self.exporter.from_filename(
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 201, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 220, in from_file
+    return self.from_notebook_node(
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/exporters/notebook.py", line 36, in from_notebook_node
+    nb_copy, resources = super().from_notebook_node(nb, resources, **kw)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 154, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/exporters/exporter.py", line 353, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/preprocessors/base.py", line 48, in __call__
+    return self.preprocess(nb, resources)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 103, in preprocess
+    self.preprocess_cell(cell, resources, index)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbconvert/preprocessors/execute.py", line 124, in preprocess_cell
+    cell = self.execute_cell(cell, index, store_history=True)
+  File "/home/sem8/.local/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/home/sem8/miniconda3/envs/py310gpu/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+
+
+def get_cross_attention(
+    model, sentence, src_tokenizer, tgt_tokenizer, device, max_len=50
+):
+    """
+    Run greedy decode and collect cross-attention weights from the
+    last decoder layer (averaged over all heads).
+
+    Returns
+    -------
+    tgt_tokens   : list[str]
+    src_tokens   : list[str]
+    attn_matrix  : np.ndarray  shape (tgt_len, src_len)
+    """
+    model.eval()
+
+    src_ids    = src_tokenizer.encode(sentence).ids
+    src_tokens = [src_tokenizer.id_to_token(i) for i in src_ids]
+    src_tensor = torch.tensor(src_ids).unsqueeze(0).to(device)
+
+    # Register a forward hook on the last decoder layer's cross-attention
+    cross_attn_weights = []
+
+    def hook_fn(module, input, output):
+        # nn.MultiheadAttention returns (attn_output, attn_weights)
+        # attn_weights: (batch, nhead, tgt_len, src_len) when need_weights=True
+        # PyTorch averages over heads by default when need_weights=True
+        cross_attn_weights.append(output[1].detach().cpu())  # (1, tgt_t, src_len)
+
+    # Hook the multihead_attn of the last decoder layer
+    last_decoder_layer = model.transformer_decoder.layers[-1]
+    hook = last_decoder_layer.multihead_attn.register_forward_hook(hook_fn)
+
+    with torch.no_grad():
+        memory = model.encode(src_tensor)
+
+    generated = [SOS_IDX]
+    attn_rows  = []
+
+    for _ in range(max_len):
+        cross_attn_weights.clear()
+        tgt_t = torch.tensor(generated).unsqueeze(0).to(device)
+        with torch.no_grad():
+            logits = model.decode(tgt_t, memory, src_tensor)
+        # cross_attn_weights[0]: (1, t, src_len) — attention for all positions
+        # We only want the last generated position
+        attn_last = cross_attn_weights[0][0, -1, :len(src_ids)].numpy()  # (src_len,)
+        next_id   = logits[0, -1].argmax().item()
+        if next_id == EOS_IDX:
+            break
+        generated.append(next_id)
+        attn_rows.append(attn_last)
+
+    hook.remove()
+
+    tgt_tokens  = [tgt_tokenizer.id_to_token(i) for i in generated[1:]]
+    attn_matrix = np.array(attn_rows)   # (tgt_len, src_len)
+    return tgt_tokens, src_tokens, attn_matrix
+
+
+def plot_attention(sentence, tgt_tokens, src_tokens, attn_matrix):
+    fig, ax = plt.subplots(
+        figsize=(max(8, len(src_tokens)), max(6, len(tgt_tokens) // 2))
+    )
+    im = ax.matshow(attn_matrix, cmap='viridis')
+    plt.colorbar(im, ax=ax)
+    ax.set_xticks(range(len(src_tokens)))
+    ax.set_yticks(range(len(tgt_tokens)))
+    ax.set_xticklabels(src_tokens, rotation=90, fontsize=9)
+    ax.set_yticklabels(tgt_tokens, fontsize=9)
+    ax.set_xlabel('Source (Akkadian BPE tokens)')
+    ax.set_ylabel('Target (English BPE tokens)')
+    ax.set_title(f'Cross-Attention (last decoder layer): "{sentence[:60]}"')
+    plt.tight_layout()
+    plt.savefig('transformer_attention_map.png', dpi=150)
+    plt.show()
+
+
+# Run on a sample from the test set
+sample_sentence = test_df.iloc[0]['source']
+tgt_tok, src_tok, attn = get_cross_attention(
+    model, sample_sentence, src_tokenizer, tgt_tokenizer, device
+)
+plot_attention(sample_sentence, tgt_tok, src_tok, attn)
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mAttributeError[0m                            Traceback (most recent call last)
+Cell [0;32mIn[17], line 84[0m
+[1;32m     82[0m [38;5;66;03m# Run on a sample from the test set[39;00m
+[1;32m     83[0m sample_sentence [38;5;241m=[39m test_df[38;5;241m.[39miloc[[38;5;241m0[39m][[38;5;124m'[39m[38;5;124msource[39m[38;5;124m'[39m]
+[0;32m---> 84[0m tgt_tok, src_tok, attn [38;5;241m=[39m [43mget_cross_attention[49m[43m([49m
+[1;32m     85[0m [43m    [49m[43mmodel[49m[43m,[49m[43m [49m[43msample_sentence[49m[43m,[49m[43m [49m[43msrc_tokenizer[49m[43m,[49m[43m [49m[43mtgt_tokenizer[49m[43m,[49m[43m [49m[43mdevice[49m
+[1;32m     86[0m [43m)[49m
+[1;32m     87[0m plot_attention(sample_sentence, tgt_tok, src_tok, attn)
+
+Cell [0;32mIn[17], line 47[0m, in [0;36mget_cross_attention[0;34m(model, sentence, src_tokenizer, tgt_tokenizer, device, max_len)[0m
+[1;32m     45[0m tgt_t [38;5;241m=[39m torch[38;5;241m.[39mtensor(generated)[38;5;241m.[39munsqueeze([38;5;241m0[39m)[38;5;241m.[39mto(device)
+[1;32m     46[0m [38;5;28;01mwith[39;00m torch[38;5;241m.[39mno_grad():
+[0;32m---> 47[0m     logits [38;5;241m=[39m [43mmodel[49m[38;5;241;43m.[39;49m[43mdecode[49m[43m([49m[43mtgt_t[49m[43m,[49m[43m [49m[43mmemory[49m[43m,[49m[43m [49m[43msrc_tensor[49m[43m)[49m
+[1;32m     48[0m [38;5;66;03m# cross_attn_weights[0]: (1, t, src_len) — attention for all positions[39;00m
+[1;32m     49[0m [38;5;66;03m# We only want the last generated position[39;00m
+[1;32m     50[0m attn_last [38;5;241m=[39m cross_attn_weights[[38;5;241m0[39m][[38;5;241m0[39m, [38;5;241m-[39m[38;5;241m1[39m, :[38;5;28mlen[39m(src_ids)][38;5;241m.[39mnumpy()  [38;5;66;03m# (src_len,)[39;00m
+
+Cell [0;32mIn[9], line 164[0m, in [0;36mTransformerMT.decode[0;34m(self, tgt, memory, src)[0m
+[1;32m    159[0m src_pad_mask     [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mmake_src_key_padding_mask(src)
+[1;32m    161[0m tgt_emb [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mpos_decoder(
+[1;32m    162[0m     [38;5;28mself[39m[38;5;241m.[39mtgt_embedding(tgt) [38;5;241m*[39m math[38;5;241m.[39msqrt([38;5;28mself[39m[38;5;241m.[39md_model)
+[1;32m    163[0m )
+[0;32m--> 164[0m out [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mtransformer_decoder[49m[43m([49m
+[1;32m    165[0m [43m    [49m[43mtgt_emb[49m[43m,[49m[43m [49m[43mmemory[49m[43m,[49m
+[1;32m    166[0m [43m    [49m[43mtgt_mask[49m[38;5;241;43m=[39;49m[43mtgt_causal_mask[49m[43m,[49m
+[1;32m    167[0m [43m    [49m[43mtgt_key_padding_mask[49m[38;5;241;43m=[39;49m[43mtgt_pad_mask[49m[43m,[49m
+[1;32m    168[0m [43m    [49m[43mmemory_key_padding_mask[49m[38;5;241;43m=[39;49m[43msrc_pad_mask[49m[43m,[49m
+[1;32m    169[0m [43m[49m[43m)[49m
+[1;32m    170[0m [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39mfc_out(out)
+
+File [0;32m~/miniconda3/envs/py310gpu/lib/python3.10/site-packages/torch/nn/modules/module.py:1779[0m, in [0;36mModule._wrapped_call_impl[0;34m(self, *args, **kwargs)[0m
+[1;32m   1777[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_compiled_call_impl([38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs)  [38;5;66;03m# type: ignore[misc][39;00m
+[1;32m   1778[0m [38;5;28;01melse[39;00m:
+[0;32m-> 1779[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_call_impl[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/miniconda3/envs/py310gpu/lib/python3.10/site-packages/torch/nn/modules/module.py:1790[0m, in [0;36mModule._call_impl[0;34m(self, *args, **kwargs)[0m
+[1;32m   1785[0m [38;5;66;03m# If we don't have any hooks, we want to skip the rest of the logic in[39;00m
+[1;32m   1786[0m [38;5;66;03m# this function, and just call forward.[39;00m
+[1;32m   1787[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m ([38;5;28mself[39m[38;5;241m.[39m_backward_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_backward_pre_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_forward_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_forward_pre_hooks
+[1;32m   1788[0m         [38;5;129;01mor[39;00m _global_backward_pre_hooks [38;5;129;01mor[39;00m _global_backward_hooks
+[1;32m   1789[0m         [38;5;129;01mor[39;00m _global_forward_hooks [38;5;129;01mor[39;00m _global_forward_pre_hooks):
+[0;32m-> 1790[0m     [38;5;28;01mreturn[39;00m [43mforward_call[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m   1792[0m result [38;5;241m=[39m [38;5;28;01mNone[39;00m
+[1;32m   1793[0m called_always_called_hooks [38;5;241m=[39m [38;5;28mset[39m()
+
+File [0;32m~/miniconda3/envs/py310gpu/lib/python3.10/site-packages/torch/nn/modules/transformer.py:644[0m, in [0;36mTransformerDecoder.forward[0;34m(self, tgt, memory, tgt_mask, memory_mask, tgt_key_padding_mask, memory_key_padding_mask, tgt_is_causal, memory_is_causal)[0m
+[1;32m    641[0m tgt_is_causal [38;5;241m=[39m _detect_is_causal_mask(tgt_mask, tgt_is_causal, seq_len)
+[1;32m    643[0m [38;5;28;01mfor[39;00m mod [38;5;129;01min[39;00m [38;5;28mself[39m[38;5;241m.[39mlayers:
+[0;32m--> 644[0m     output [38;5;241m=[39m [43mmod[49m[43m([49m
+[1;32m    645[0m [43m        [49m[43moutput[49m[43m,[49m
+[1;32m    646[0m [43m        [49m[43mmemory[49m[43m,[49m
+[1;32m    647[0m [43m        [49m[43mtgt_mask[49m[38;5;241;43m=[39;49m[43mtgt_mask[49m[43m,[49m
+[1;32m    648[0m [43m        [49m[43mmemory_mask[49m[38;5;241;43m=[39;49m[43mmemory_mask[49m[43m,[49m
+[1;32m    649[0m [43m        [49m[43mtgt_key_padding_mask[49m[38;5;241;43m=[39;49m[43mtgt_key_padding_mask[49m[43m,[49m
+[1;32m    650[0m [43m        [49m[43mmemory_key_padding_mask[49m[38;5;241;43m=[39;49m[43mmemory_key_padding_mask[49m[43m,[49m
+[1;32m    651[0m [43m        [49m[43mtgt_is_causal[49m[38;5;241;43m=[39;49m[43mtgt_is_causal[49m[43m,[49m
+[1;32m    652[0m [43m        [49m[43mmemory_is_causal[49m[38;5;241;43m=[39;49m[43mmemory_is_causal[49m[43m,[49m
+[1;32m    653[0m [43m    [49m[43m)[49m
+[1;32m    655[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mnorm [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[1;32m    656[0m     output [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mnorm(output)
+
+File [0;32m~/miniconda3/envs/py310gpu/lib/python3.10/site-packages/torch/nn/modules/module.py:1779[0m, in [0;36mModule._wrapped_call_impl[0;34m(self, *args, **kwargs)[0m
+[1;32m   1777[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_compiled_call_impl([38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs)  [38;5;66;03m# type: ignore[misc][39;00m
+[1;32m   1778[0m [38;5;28;01melse[39;00m:
+[0;32m-> 1779[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_call_impl[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/miniconda3/envs/py310gpu/lib/python3.10/site-packages/torch/nn/modules/module.py:1790[0m, in [0;36mModule._call_impl[0;34m(self, *args, **kwargs)[0m
+[1;32m   1785[0m [38;5;66;03m# If we don't have any hooks, we want to skip the rest of the logic in[39;00m
+[1;32m   1786[0m [38;5;66;03m# this function, and just call forward.[39;00m
+[1;32m   1787[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m ([38;5;28mself[39m[38;5;241m.[39m_backward_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_backward_pre_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_forward_hooks [38;5;129;01mor[39;00m [38;5;28mself[39m[38;5;241m.[39m_forward_pre_hooks
+[1;32m   1788[0m         [38;5;129;01mor[39;00m _global_backward_pre_hooks [38;5;129;01mor[39;00m _global_backward_hooks
+[1;32m   1789[0m         [38;5;129;01mor[39;00m _global_forward_hooks [38;5;129;01mor[39;00m _global_forward_pre_hooks):
+[0;32m-> 1790[0m     [38;5;28;01mreturn[39;00m [43mforward_call[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m   1792[0m result [38;5;241m=[39m [38;5;28;01mNone[39;00m
+[1;32m   1793[0m called_always_called_hooks [38;5;241m=[39m [38;5;28mset[39m()
+
+File [0;32m~/miniconda3/envs/py310gpu/lib/python3.10/site-packages/torch/nn/modules/transformer.py:1135[0m, in [0;36mTransformerDecoderLayer.forward[0;34m(self, tgt, memory, tgt_mask, memory_mask, tgt_key_padding_mask, memory_key_padding_mask, tgt_is_causal, memory_is_causal)[0m
+[1;32m   1131[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39mnorm_first:
+[1;32m   1132[0m     x [38;5;241m=[39m x [38;5;241m+[39m [38;5;28mself[39m[38;5;241m.[39m_sa_block(
+[1;32m   1133[0m         [38;5;28mself[39m[38;5;241m.[39mnorm1(x), tgt_mask, tgt_key_padding_mask, tgt_is_causal
+[1;32m   1134[0m     )
+[0;32m-> 1135[0m     x [38;5;241m=[39m x [38;5;241m+[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_mha_block[49m[43m([49m
+[1;32m   1136[0m [43m        [49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mnorm2[49m[43m([49m[43mx[49m[43m)[49m[43m,[49m
+[1;32m   1137[0m [43m        [49m[43mmemory[49m[43m,[49m
+[1;32m   1138[0m [43m        [49m[43mmemory_mask[49m[43m,[49m
+[1;32m   1139[0m [43m        [49m[43mmemory_key_padding_mask[49m[43m,[49m
+[1;32m   1140[0m [43m        [49m[43mmemory_is_causal[49m[43m,[49m
+[1;32m   1141[0m [43m    [49m[43m)[49m
+[1;32m   1142[0m     x [38;5;241m=[39m x [38;5;241m+[39m [38;5;28mself[39m[38;5;241m.[39m_ff_block([38;5;28mself[39m[38;5;241m.[39mnorm3(x))
+[1;32m   1143[0m [38;5;28;01melse[39;00m:
+
+File [0;32m~/miniconda3/envs/py310gpu/lib/python3.10/site-packages/torch/nn/modules/transformer.py:1185[0m, in [0;36mTransformerDecoderLayer._mha_block[0;34m(self, x, mem, attn_mask, key_padding_mask, is_causal)[0m
+[1;32m   1177[0m [38;5;28;01mdef[39;00m[38;5;250m [39m[38;5;21m_mha_block[39m(
+[1;32m   1178[0m     [38;5;28mself[39m,
+[1;32m   1179[0m     x: Tensor,
+[0;32m   (...)[0m
+[1;32m   1183[0m     is_causal: [38;5;28mbool[39m [38;5;241m=[39m [38;5;28;01mFalse[39;00m,
+[1;32m   1184[0m ) [38;5;241m-[39m[38;5;241m>[39m Tensor:
+[0;32m-> 1185[0m     x [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mmultihead_attn[49m[43m([49m
+[1;32m   1186[0m [43m        [49m[43mx[49m[43m,[49m
+[1;32m   1187[0m [43m        [49m[43mmem[49m[43m,[49m
+[1;32m   1188[0m [43m        [49m[43mmem[49m[43m,[49m
+[1;32m   1189[0m [43m        [49m[43mattn_mask[49m[38;5;241;43m=[39;49m[43mattn_mask[49m[43m,[49m
+[1;32m   1190[0m [43m        [49m[43mkey_padding_mask[49m[38;5;241;43m=[39;49m[43mkey_padding_mask[49m[43m,[49m
+[1;32m   1191[0m [43m        [49m[43mis_causal[49m[38;5;241;43m=[39;49m[43mis_causal[49m[43m,[49m
+[1;32m   1192[0m [43m        [49m[43mneed_weights[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
+[1;32m   1193[0m [43m    [49m[43m)[49m[[38;5;241m0[39m]
+[1;32m   1194[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39mdropout2(x)
+
+File [0;32m~/miniconda3/envs/py310gpu/lib/python3.10/site-packages/torch/nn/modules/module.py:1779[0m, in [0;36mModule._wrapped_call_impl[0;34m(self, *args, **kwargs)[0m
+[1;32m   1777[0m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_compiled_call_impl([38;5;241m*[39margs, [38;5;241m*[39m[38;5;241m*[39mkwargs)  [38;5;66;03m# type: ignore[misc][39;00m
+[1;32m   1778[0m [38;5;28;01melse[39;00m:
+[0;32m-> 1779[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_call_impl[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/miniconda3/envs/py310gpu/lib/python3.10/site-packages/torch/nn/modules/module.py:1885[0m, in [0;36mModule._call_impl[0;34m(self, *args, **kwargs)[0m
+[1;32m   1882[0m     [38;5;28;01mreturn[39;00m inner()
+[1;32m   1884[0m [38;5;28;01mtry[39;00m:
+[0;32m-> 1885[0m     [38;5;28;01mreturn[39;00m [43minner[49m[43m([49m[43m)[49m
+[1;32m   1886[0m [38;5;28;01mexcept[39;00m [38;5;167;01mException[39;00m:
+[1;32m   1887[0m     [38;5;66;03m# run always called hooks if they have not already been run[39;00m
+[1;32m   1888[0m     [38;5;66;03m# For now only forward hooks have the always_call option but perhaps[39;00m
+[1;32m   1889[0m     [38;5;66;03m# this functionality should be added to full backward hooks as well.[39;00m
+[1;32m   1890[0m     [38;5;28;01mfor[39;00m hook_id, hook [38;5;129;01min[39;00m _global_forward_hooks[38;5;241m.[39mitems():
+
+File [0;32m~/miniconda3/envs/py310gpu/lib/python3.10/site-packages/torch/nn/modules/module.py:1846[0m, in [0;36mModule._call_impl.<locals>.inner[0;34m()[0m
+[1;32m   1844[0m     hook_result [38;5;241m=[39m hook([38;5;28mself[39m, args, kwargs, result)
+[1;32m   1845[0m [38;5;28;01melse[39;00m:
+[0;32m-> 1846[0m     hook_result [38;5;241m=[39m [43mhook[49m[43m([49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43margs[49m[43m,[49m[43m [49m[43mresult[49m[43m)[49m
+[1;32m   1848[0m [38;5;28;01mif[39;00m hook_result [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[1;32m   1849[0m     result [38;5;241m=[39m hook_result
+
+Cell [0;32mIn[17], line 31[0m, in [0;36mget_cross_attention.<locals>.hook_fn[0;34m(module, input, output)[0m
+[1;32m     27[0m [38;5;28;01mdef[39;00m[38;5;250m [39m[38;5;21mhook_fn[39m(module, [38;5;28minput[39m, output):
+[1;32m     28[0m     [38;5;66;03m# nn.MultiheadAttention returns (attn_output, attn_weights)[39;00m
+[1;32m     29[0m     [38;5;66;03m# attn_weights: (batch, nhead, tgt_len, src_len) when need_weights=True[39;00m
+[1;32m     30[0m     [38;5;66;03m# PyTorch averages over heads by default when need_weights=True[39;00m
+[0;32m---> 31[0m     cross_attn_weights[38;5;241m.[39mappend([43moutput[49m[43m[[49m[38;5;241;43m1[39;49m[43m][49m[38;5;241;43m.[39;49m[43mdetach[49m()[38;5;241m.[39mcpu())
+
+[0;31mAttributeError[0m: 'NoneType' object has no attribute 'detach'
+
+Traceback (most recent call last):
+  File "/home/sem8/satts/NLP/script.py", line 12, in <module>
+    run("transformer_akkadian_english.ipynb")
+    ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sem8/satts/NLP/script.py", line 4, in run
+    subprocess.run([
+    ~~~~~~~~~~~~~~^^
+        "jupyter", "nbconvert",
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        "--output", nb.replace(".ipynb", "_out.ipynb")
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ], check=True)
+    ^^^^^^^^^^^^^^
+  File "/home/sem8/miniconda3/lib/python3.13/subprocess.py", line 577, in run
+    raise CalledProcessError(retcode, process.args,
+                             output=stdout, stderr=stderr)
+subprocess.CalledProcessError: Command '['jupyter', 'nbconvert', '--to', 'notebook', '--execute', 'transformer_akkadian_english.ipynb', '--ExecutePreprocessor.timeout=-1', '--output', 'transformer_akkadian_english_out.ipynb']' returned non-zero exit status 1.
