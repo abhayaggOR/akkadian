@@ -512,11 +512,25 @@ Optimisation:
 
 Test metrics:
 
-- not available yet because the run is still in progress / incomplete
+- greedy:
+  - BLEU: `21.21`
+  - chrF++: `50.02`
+  - geometric mean: `32.57`
+- beam-4:
+  - BLEU: `27.30`
+  - chrF++: `52.56`
+  - geometric mean: `37.88`
+- test size: `4,647`
+- MT early stopping epoch: `122`
+- last MT validation epoch:
+  - val loss: `3.3528`
+  - val BLEU: `20.14`
+  - val chrF++: `49.02`
 
 Geometric mean on test:
 
-- unavailable until final test BLEU and chrF++ are produced
+- greedy: `32.57`
+- beam-4: `37.88`
 
 ## Current Artifact Inventory
 
@@ -524,18 +538,20 @@ Important saved files currently present in this folder:
 
 - `transformer_akkadian_best.pt`
 - `transformer_akkadian_mlm_best.pt`
+- `transformer_akkadian_mt_best.pt`
 - `transformer_history.csv`
+- `transformer_akkadian_mt_history.csv`
 - `transformer_runner_nohup.log`
+- `transformer_akkadian_mlm_to_mt_runner_nohup.log`
 - `transformer_akkadian_mlm_to_mt_nohup.log`
+- `transformer_akkadian_mlm_to_mt_test_metrics.json`
+- `transformer_akkadian_mlm_to_mt_test_predictions.csv`
 - `transformer_akkadian_english_runner.py`
+- `transformer_akkadian_mlm_to_mt_runner.py`
 - notebooks for all experiment variants
 
 ## Notes
 
-- The strongest completed and fully logged result currently available in this folder is the **vanilla Transformer + BPE** run from `transformer_akkadian_english_runner.py`.
+- The strongest completed and fully logged result currently available in this folder is the **Transformer + MLM pretraining + BPE** run from `transformer_akkadian_mlm_to_mt_runner.py`.
 - `bilstm_fixed.ipynb` and `bilstm_attention_bpe.ipynb` now both have recoverable held-out test metrics in the pulled notebook outputs.
-- The ongoing **Transformer + MLM pretraining** notebook should be updated here once it finishes, especially with:
-  - best validation epoch
-  - test BLEU
-  - test chrF++
-  - geometric mean on test
+- Compared with the plain Transformer + BPE baseline, MLM pretraining improved beam-search test performance from `BLEU 25.95 / chrF++ 49.93` to `BLEU 27.30 / chrF++ 52.56`.
